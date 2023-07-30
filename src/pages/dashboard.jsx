@@ -1,48 +1,28 @@
-import { useState } from "react";
-import { AppShell, Navbar, Header, Footer, Aside, Text, MediaQuery, Burger, useMantineTheme } from "@mantine/core";
+import { Grid, Paper, Text } from "@mantine/core";
+import CardOne from "../components/dashboard/CardOne";
 
-export default function AppShellDemo() {
-  const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
+function Dashboard() {
   return (
-    <AppShell
-      styles={{
-        main: {
-          background: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0],
-        },
-      }}
-      navbarOffsetBreakpoint="sm"
-      asideOffsetBreakpoint="sm"
-      navbar={
-        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-          <Text>Application navbar</Text>
-        </Navbar>
-      }
-      aside={
-        <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-          <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-            <Text>Application sidebar</Text>
-          </Aside>
-        </MediaQuery>
-      }
-      footer={
-        <Footer height={60} p="md">
-          Application footer
-        </Footer>
-      }
-      header={
-        <Header height={{ base: 50, md: 70 }} p="md">
-          <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
-            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-              <Burger opened={opened} onClick={() => setOpened((o) => !o)} size="sm" color={theme.colors.gray[6]} mr="xl" />
-            </MediaQuery>
-
-            <Text>Application header</Text>
-          </div>
-        </Header>
-      }
-    >
-      <Text>Resize app to see responsive navbar in action</Text>
-    </AppShell>
+    <Grid grow>
+      <Grid.Col span={12}>
+        <h1>Dashboard</h1>
+      </Grid.Col>
+      <Grid.Col span={8}>
+        <Paper shadow="xs" p="md" style={{ height: "420px" }}>
+          <CardOne />
+        </Paper>
+      </Grid.Col>
+      <Grid.Col span={4}>
+        <Paper shadow="xs" p="md">
+          2
+        </Paper>
+      </Grid.Col>
+      <Grid.Col span={12}>
+        <Paper shadow="xs" p="md">
+          3
+        </Paper>
+      </Grid.Col>
+    </Grid>
   );
 }
+export default Dashboard;

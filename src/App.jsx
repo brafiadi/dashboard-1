@@ -4,7 +4,7 @@ import Layout from "./components/Layout";
 
 function App() {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ fontFamily: "Inter, sans-serif" }}>
       <Layout />
     </MantineProvider>
   );

@@ -59,7 +59,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: "", label: "Dahsboard", icon: IconBellRinging },
+  { link: "", label: "Dashboard", icon: IconBellRinging },
   { link: "", label: "Popcards", icon: IconReceipt2 },
   { link: "", label: "Feedback Forms", icon: IconFingerprint },
 ];
