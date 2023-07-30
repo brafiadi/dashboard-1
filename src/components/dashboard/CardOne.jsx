@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
-import { Title } from "@mantine/core";
+import { Title, Flex, Stack, Group, Badge, Button } from "@mantine/core";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { IconChevronUp } from "@tabler/icons-react";
 
 const data = [
   {
@@ -57,12 +58,37 @@ export default class CardOne extends PureComponent {
   render() {
     return (
       <>
-        <Title order={6} c="dimmed">
-          Activity
-        </Title>
-        <Title order={4} style={{ marginBottom: "20px" }}>
-          Online Scans
-        </Title>
+        <Flex justify="space-between">
+          <Group>
+            <Stack spacing="xs">
+              <Title order={6} c="dimmed">
+                Activity
+              </Title>
+              <Title order={4} style={{ marginBottom: "20px" }}>
+                Online Scans
+              </Title>
+            </Stack>
+            <Title order={1} style={{ marginLeft: "auto" }}>
+              635
+            </Title>
+            <Badge color="yellow">
+              <IconChevronUp size={12} />
+              21.01%
+            </Badge>
+          </Group>
+          <Group>
+            <Button variant="white" color="gray.6">
+              2020
+            </Button>
+            <Button variant="white" color="gray.6">
+              2021
+            </Button>
+            <Button variant="light" color="gray.6">
+              Month
+            </Button>
+          </Group>
+        </Flex>
+
         <ResponsiveContainer width="100%" height="80%">
           <LineChart
             width={200}
@@ -75,11 +101,11 @@ export default class CardOne extends PureComponent {
               bottom: 10,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
-            <YAxis axisLine={false} />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="name" padding={{ left: 30, right: 30 }} axisLine={false} tick={{ fill: "gray", fontSize: "14" }} tickLine={false} />
+            <YAxis axisLine={false} tick={{ fill: "gray", fontSize: "14" }} tickLine={false} />
             <Tooltip />
-            <Line type="monotone" dataKey="scans" stroke="#FFBF00" activeDot={{ r: 8 }} />
+            <Line type="linear" dataKey="scans" stroke="#FFBF00" activeDot={{ r: 8 }} strokeWidth={2} />
           </LineChart>
         </ResponsiveContainer>
       </>

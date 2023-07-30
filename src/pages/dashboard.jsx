@@ -1,11 +1,19 @@
-import { Grid, Paper, Text } from "@mantine/core";
+import { Grid, Paper, Title, Text, Flex, Stack, Group, Button } from "@mantine/core";
 import CardOne from "../components/dashboard/CardOne";
 
 function Dashboard() {
   return (
-    <Grid grow>
-      <Grid.Col span={12}>
-        <h1>Dashboard</h1>
+    <Grid style={{ margin: 20 }} grow>
+      <Grid.Col span={12} style={{ marginBottom: 20 }}>
+        <Flex justify="space-between">
+          <Stack spacing="xs">
+            <Title order={1}>Dashboard</Title>
+            <Text>January 1 - 30, 2023</Text>
+          </Stack>
+          <Group>
+            <Button color="gray.6">7 days</Button>
+          </Group>
+        </Flex>
       </Grid.Col>
       <Grid.Col span={8}>
         <Paper shadow="xs" p="md" style={{ height: "420px" }}>
