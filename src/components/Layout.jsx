@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AppShell, Navbar, Header, Footer, Aside, Text, MediaQuery, Burger, useMantineTheme } from "@mantine/core";
+import { NavbarMenu } from "./NavbarMenu";
 
 export default function Layout() {
   const theme = useMantineTheme();
@@ -13,16 +14,10 @@ export default function Layout() {
         },
       }}
       navbarOffsetBreakpoint="sm"
-      asideOffsetBreakpoint="sm"
       navbar={
         <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-          <Text>Application navbar</Text>
+          <NavbarMenu />
         </Navbar>
-      }
-      footer={
-        <Footer height={60} p="md">
-          Application footer
-        </Footer>
       }
       header={
         <Header height={{ base: 50, md: 70 }} p="md">
