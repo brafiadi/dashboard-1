@@ -11,7 +11,18 @@ function Dashboard() {
             <Text>January 1 - 30, 2023</Text>
           </Stack>
           <Group>
-            <Button color="gray.6">7 days</Button>
+            <Button variant="light" color="gray">
+              7 Days
+            </Button>
+            <Button variant="light" color="gray">
+              1 Month
+            </Button>
+            <Button variant="light" color="gray">
+              3 Months
+            </Button>
+            <Button variant="filled" color="yellow">
+              1 Year
+            </Button>
           </Group>
         </Flex>
       </Grid.Col>

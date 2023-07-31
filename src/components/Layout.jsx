@@ -12,6 +12,7 @@ export default function Layout() {
       styles={{
         main: {
           background: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0],
+          backgroundColor: "#F6F5EE;",
         },
       }}
       navbarOffsetBreakpoint="sm"
