@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createStyles, Navbar, Image, Group, Code, getStylesRef, rem } from "@mantine/core";
-import { IconBellRinging, IconFingerprint, IconKey, IconSettings, Icon2fa, IconDatabaseImport, IconReceipt2, IconSwitchHorizontal, IconLogout } from "@tabler/icons-react";
+import { IconLayoutDashboard, IconFingerprint, IconKey, IconSettings, Icon2fa, IconDatabaseImport, IconReceipt2, IconSwitchHorizontal, IconLogout } from "@tabler/icons-react";
 import Logo from "/logo.svg";
 
 const useStyles = createStyles((theme) => ({
@@ -59,7 +59,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: "", label: "Dashboard", icon: IconBellRinging },
+  { link: "", label: "Dashboard", icon: IconLayoutDashboard },
   { link: "", label: "Popcards", icon: IconReceipt2 },
   { link: "", label: "Feedback Forms", icon: IconFingerprint },
 ];
