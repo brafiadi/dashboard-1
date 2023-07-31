@@ -1,4 +1,5 @@
 import { Grid, Paper, Title, Text, Flex, Stack, Group, Button } from "@mantine/core";
+import { DatePickerInput } from "@mantine/dates";
 import CardOne from "../components/dashboard/CardOne";
 import CardTwo from "../components/dashboard/CardTwo";
 
@@ -23,6 +24,9 @@ function Dashboard() {
             </Button>
             <Button variant="filled" color="yellow">
               1 Year
+            </Button>
+            <Button variant="light" color="gray">
+              9 Jan 2023 - 7 Feb 2023
             </Button>
           </Group>
         </Flex>
