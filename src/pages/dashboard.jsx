@@ -3,7 +3,7 @@ import CardOne from "../components/dashboard/CardOne";
 
 function Dashboard() {
   return (
-    <Grid style={{ margin: 20 }} grow>
+    <Grid style={{ margin: 20 }}>
       <Grid.Col span={12} style={{ marginBottom: 20 }}>
         <Flex justify="space-between">
           <Stack spacing="xs">
