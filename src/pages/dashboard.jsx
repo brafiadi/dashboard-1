@@ -1,5 +1,6 @@
 import { Grid, Paper, Title, Text, Flex, Stack, Group, Button } from "@mantine/core";
 import CardOne from "../components/dashboard/CardOne";
+import CardTwo from "../components/dashboard/CardTwo";
 
 function Dashboard() {
   return (
@@ -33,7 +34,7 @@ function Dashboard() {
       </Grid.Col>
       <Grid.Col span={4}>
         <Paper shadow="xs" p="md">
-          2
+          <CardTwo />
         </Paper>
       </Grid.Col>
       <Grid.Col span={12}>
