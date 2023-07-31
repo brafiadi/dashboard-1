@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createStyles, Navbar, Image, Group, Code, getStylesRef, rem } from "@mantine/core";
-import { IconLayoutDashboard, IconFingerprint, IconKey, IconSettings, Icon2fa, IconDatabaseImport, IconReceipt2, IconSwitchHorizontal, IconLogout } from "@tabler/icons-react";
+import { IconLayoutDashboard, IconBoxMultiple, IconKey, IconSettings, IconMessage2, IconDatabaseImport, IconReceipt2, IconSwitchHorizontal, IconLogout2 } from "@tabler/icons-react";
 import Logo from "/logo.svg";
 
 const useStyles = createStyles((theme) => ({
@@ -59,9 +59,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: "", label: "Dashboard", icon: IconLayoutDashboard },
-  { link: "", label: "Popcards", icon: IconReceipt2 },
-  { link: "", label: "Feedback Forms", icon: IconFingerprint },
+  { link: "/", label: "Dashboard", icon: IconLayoutDashboard },
+  { link: "", label: "Popcards", icon: IconBoxMultiple },
+  { link: "", label: "Feedback Forms", icon: IconMessage2 },
 ];
 
 export function NavbarMenu() {
@@ -96,12 +96,12 @@ export function NavbarMenu() {
 
       <Navbar.Section className={classes.footer}>
         <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
+          <IconSettings className={classes.linkIcon} stroke={1.5} />
           <span>Settings</span>
         </a>
 
         <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
+          <IconLogout2 className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>
       </Navbar.Section>
