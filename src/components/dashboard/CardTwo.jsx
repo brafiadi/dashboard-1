@@ -22,7 +22,7 @@ const data = [
   },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#FB923C", "#5EEAD4", "#A78BFA", "#FFC700"];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.22;
@@ -76,10 +76,11 @@ export default class CardTwo extends PureComponent {
         </Flex>
         <ResponsiveContainer width="100%" height={310}>
           <PieChart>
-            <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={100} fill="#fab005" labelLine={false} label={renderCustomizedLabel} activeShape={renderActiveShape} />
-            {data.map((entry, index) => (
-              <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
-            ))}
+            <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={100} fill="#fab005" labelLine={false} label={renderCustomizedLabel} activeShape={renderActiveShape}>
+              {data.map((entry, index) => (
+                <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
+              ))}
+            </Pie>
           </PieChart>
         </ResponsiveContainer>
       </>
