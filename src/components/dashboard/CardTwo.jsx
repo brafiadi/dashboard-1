@@ -1,23 +1,23 @@
 import React, { PureComponent } from "react";
 import { Title, Flex, Stack, Group, Badge, Button } from "@mantine/core";
-import { PieChart, Pie, Cell, Sector, ResponsiveContainer } from "recharts";
+import { Legend, PieChart, Pie, Cell, Sector, ResponsiveContainer } from "recharts";
 import { IconChevronUp } from "@tabler/icons-react";
 
 const data = [
   {
-    name: "Group A",
+    name: "Target 1",
     value: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Group B",
+    name: "Target 2",
     value: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Group C",
+    name: "Target 3",
     value: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Group D",
+    name: "Target 4",
     value: Math.floor(Math.random() * 10000),
   },
 ];
@@ -25,15 +25,19 @@ const data = [
 const COLORS = ["#FB923C", "#5EEAD4", "#A78BFA", "#FFC700"];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.22;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <text x={x} y={y} fontSize={12} fill="white" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central">
+    <text x={x} y={y} fontSize={14} fill="white" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central">
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
+};
+
+const renderColorfulLegendText = (value, entry) => {
+  return <span style={{ color: "#596579", fontWeight: 500 }}>{value}</span>;
 };
 
 const renderActiveShape = (props) => {
@@ -51,14 +55,24 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {payload.name}
+      <text x={cx} y={cy} dy={8} fontSize={16} fontWeight="500" textAnchor="middle" fill="#000000">
+        Average range
       </text>
+      <Sector cx={cx} cy={cy} innerRadius={innerRadius + 5} outerRadius={outerRadius + 5} startAngle={startAngle} endAngle={endAngle} fill={fill} />
     </g>
   );
 };
 
 export default class CardTwo extends PureComponent {
+  state = {
+    activeIndex: 0,
+  };
+
+  onPieEnter = (_, index) => {
+    this.setState({
+      activeIndex: index,
+    });
+  };
   render() {
     return (
       <>
@@ -76,11 +90,27 @@ export default class CardTwo extends PureComponent {
         </Flex>
         <ResponsiveContainer width="100%" height={310}>
           <PieChart>
-            <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={100} fill="#fab005" labelLine={false} label={renderCustomizedLabel} activeShape={renderActiveShape}>
+            <Pie
+              data={data}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              innerRadius={60}
+              outerRadius={100}
+              fill="#fab005"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              paddingAngle={5}
+              activeIndex={this.state.activeIndex}
+              activeShape={renderActiveShape}
+              onMouseEnter={this.onPieEnter}
+            >
               {data.map((entry, index) => (
                 <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
               ))}
             </Pie>
+            <Legend iconType="circle" layout="horizontal" verticalAlign="bottom" iconSize={8} formatter={renderColorfulLegendText} />
           </PieChart>
         </ResponsiveContainer>
       </>
