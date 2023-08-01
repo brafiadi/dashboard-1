@@ -1,10 +1,11 @@
 import { DataTable } from "mantine-datatable";
+import { Avatar, Group, Stack, Title, Text } from "@mantine/core";
 
 const examples = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
-  avatar: `https://picsum.photos/id/${i + 1}/50/50`,
+  avatar: `https://i.pravatar.cc/50?img=${i + 1}`,
   user: `User ${Math.floor(Math.random() * 100)}`,
-  position: `Position ${i + 1}`,
+  position: Math.random() < 0.5 ? "Sales" : "Marketing",
   target: Math.floor(Math.random() * 5000) + 1000,
   status: Math.random() < 0.5 ? "completed" : "in progress",
   lastScanned: `${Math.floor(Math.random() * 60)} minutes ago`,
@@ -13,5 +14,29 @@ const examples = Array.from({ length: 10 }, (_, i) => ({
 }));
 
 export default function TableExample() {
-  return <DataTable columns={[{ accessor: "user" }, { accessor: "target" }, { accessor: "status" }, { accessor: "lastScanned" }, { accessor: "scansPerHour" }, { accessor: "lastSevenDays" }]} records={examples} />;
+  return (
+    <DataTable
+      columns={[
+        {
+          accessor: "user",
+          width: "40%",
+          render: ({ avatar, user, position }) => (
+            <Group>
+              <Avatar src={avatar} radius="md" />
+              <Stack spacing={0}>
+                <Title order={5}>{user}</Title>
+                <Text c="dimmed">{position}</Text>
+              </Stack>
+            </Group>
+          ),
+        },
+        { accessor: "target" },
+        { accessor: "status" },
+        { accessor: "lastScanned" },
+        { accessor: "scansPerHour" },
+        { accessor: "lastSevenDays" },
+      ]}
+      records={examples}
+    />
+  );
 }
