@@ -50,12 +50,16 @@ const renderActiveShape = (props) => {
   const mx = cx + (outerRadius + 30) * cos;
   const my = cy + (outerRadius + 30) * sin;
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  const avg = Math.floor(Math.random() * 100);
   const ey = my;
   const textAnchor = cos >= 0 ? "start" : "end";
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} fontSize={16} fontWeight="500" textAnchor="middle" fill="#000000">
+      <text x={cx} y={cy - 10} dy={8} fontSize={26} fontWeight="700" textAnchor="middle" fill="#000000">
+        {avg}
+      </text>
+      <text x={cx} y={cy + 10} dy={8} fontSize={14} fontWeight="500" textAnchor="middle" fill="#000000">
         Average range
       </text>
       <Sector cx={cx} cy={cy} innerRadius={innerRadius + 5} outerRadius={outerRadius + 5} startAngle={startAngle} endAngle={endAngle} fill={fill} />
@@ -95,7 +99,7 @@ export default class CardTwo extends PureComponent {
               dataKey="value"
               nameKey="name"
               cx="50%"
-              cy="50%"
+              cy="40%"
               innerRadius={60}
               outerRadius={100}
               fill="#fab005"
