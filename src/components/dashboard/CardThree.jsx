@@ -1,3 +1,5 @@
+import React from "react";
+import { Sparklines, SparklinesLine, SparklinesCurve } from "react-sparklines";
 import { DataTable } from "mantine-datatable";
 import { Avatar, Badge, Flex, Group, Stack, Title, Text, ThemeIcon, createStyles } from "@mantine/core";
 import { IconSquareFilled } from "@tabler/icons-react";
@@ -11,7 +13,15 @@ const examples = Array.from({ length: 10 }, (_, i) => ({
   status: Math.random() < 0.33 ? "Completed" : Math.random() < 0.66 ? "In process" : Math.random() < 0.83 ? "On hold" : "In active",
   lastScanned: `${Math.floor(Math.random() * 60)} minutes ago`,
   scansPerHour: Math.floor(Math.random() * 20) + 5,
-  lastSevenDays: Math.floor(Math.random() * 100) + 50,
+  lastSevenDays: [
+    Math.floor(Math.random() * 100) + 50,
+    Math.floor(Math.random() * 100) - 50,
+    Math.floor(Math.random() * 100) + 20,
+    Math.floor(Math.random() * 100) + 30,
+    Math.floor(Math.random() * 100) - 40,
+    Math.floor(Math.random() * 100) + 70,
+    Math.floor(Math.random() * 100) + 10,
+  ],
 }));
 
 const useStyles = createStyles((theme) => ({
@@ -22,6 +32,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function TableExample() {
   const { classes } = useStyles();
+  const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   return (
     <>
       <Flex justify="space-between">
@@ -83,7 +94,14 @@ export default function TableExample() {
               </Text>
             ),
           },
-          { accessor: "lastSevenDays" },
+          {
+            accessor: "lastSevenDays",
+            render: ({ lastSevenDays }) => (
+              <Sparklines data={lastSevenDays}>
+                <SparklinesCurve color={randomColor} />
+              </Sparklines>
+            ),
+          },
         ]}
         records={examples}
       />
