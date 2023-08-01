@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Grid, Paper, Title, Text, Flex, Stack, Group, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import CardOne from "../components/dashboard/CardOne";
 import CardTwo from "../components/dashboard/CardTwo";
+import TableExample from "../components/dashboard/CardThree";
 
 function Dashboard() {
   return (
@@ -43,7 +45,7 @@ function Dashboard() {
       </Grid.Col>
       <Grid.Col span={12}>
         <Paper shadow="xs" p="md">
-          3
+          <TableExample />
         </Paper>
       </Grid.Col>
     </Grid>

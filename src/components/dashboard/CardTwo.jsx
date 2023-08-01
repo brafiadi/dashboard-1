@@ -37,7 +37,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 const renderColorfulLegendText = (value, entry) => {
-  return <span style={{ color: "#596579", fontWeight: 500 }}>{value}</span>;
+  return <span style={{ color: "#596579", fontWeight: 500, fontSize: 12 }}>{value}</span>;
 };
 
 const renderActiveShape = (props) => {
@@ -56,10 +56,10 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text x={cx} y={cy - 10} dy={8} fontSize={26} fontWeight="700" textAnchor="middle" fill="#000000">
+      <text x={cx} y={cy - 10} dy={8} fontSize={28} fontWeight="700" textAnchor="middle" fill="#000000">
         {avg}
       </text>
-      <text x={cx} y={cy + 10} dy={8} fontSize={14} fontWeight="500" textAnchor="middle" fill="#000000">
+      <text x={cx} y={cy + 10} dy={8} fontSize={14} fontWeight="400" textAnchor="middle" fill="#000000">
         Average range
       </text>
       <Sector cx={cx} cy={cy} innerRadius={innerRadius + 5} outerRadius={outerRadius + 5} startAngle={startAngle} endAngle={endAngle} fill={fill} />
