@@ -1,8 +1,8 @@
 import React from "react";
 import { Sparklines, SparklinesLine, SparklinesCurve } from "react-sparklines";
 import { DataTable } from "mantine-datatable";
-import { Avatar, Badge, Flex, Group, Stack, Title, Text, ThemeIcon, createStyles } from "@mantine/core";
-import { IconSquareFilled } from "@tabler/icons-react";
+import { Avatar, Button, Badge, Flex, Group, Stack, Title, Text, TextInput, ThemeIcon, createStyles, Center } from "@mantine/core";
+import { IconSquareFilled, IconSearch } from "@tabler/icons-react";
 
 const examples = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
@@ -14,13 +14,13 @@ const examples = Array.from({ length: 10 }, (_, i) => ({
   lastScanned: `${Math.floor(Math.random() * 60)} minutes ago`,
   scansPerHour: Math.floor(Math.random() * 20) + 5,
   lastSevenDays: [
-    Math.floor(Math.random() * 100) + 50,
-    Math.floor(Math.random() * 100) - 50,
-    Math.floor(Math.random() * 100) + 20,
-    Math.floor(Math.random() * 100) + 30,
-    Math.floor(Math.random() * 100) - 40,
-    Math.floor(Math.random() * 100) + 70,
-    Math.floor(Math.random() * 100) + 10,
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
+    Math.floor(Math.random() * 100) * (Math.random() < 0.5 ? -1 : 1),
   ],
 }));
 
@@ -45,6 +45,15 @@ export default function TableExample() {
               100 Users in the past 7 days
             </Title>
           </Stack>
+        </Group>
+        <Group>
+          <Button variant="outline" color="gray.6">
+            Filter
+          </Button>
+          <TextInput m="0" p="0" placeholder="Search" mb="md" icon={<IconSearch size="0.9rem" stroke={1.5} />} />
+          <Button variant="filled" color="yellow">
+            Export
+          </Button>
         </Group>
       </Flex>
       <DataTable
