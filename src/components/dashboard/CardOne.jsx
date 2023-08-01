@@ -60,7 +60,7 @@ export default class CardOne extends PureComponent {
       <>
         <Flex justify="space-between">
           <Group>
-            <Stack spacing="xs">
+            <Stack spacing="0">
               <Title order={6} c="dimmed">
                 Activity
               </Title>
