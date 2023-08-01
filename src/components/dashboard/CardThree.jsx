@@ -1,5 +1,5 @@
 import { DataTable } from "mantine-datatable";
-import { Avatar, Group, Stack, Title, Text, ThemeIcon } from "@mantine/core";
+import { Avatar, Group, Stack, Title, Text, ThemeIcon, createStyles } from "@mantine/core";
 import { IconSquareFilled } from "@tabler/icons-react";
 
 const examples = Array.from({ length: 10 }, (_, i) => ({
@@ -14,13 +14,21 @@ const examples = Array.from({ length: 10 }, (_, i) => ({
   lastSevenDays: Math.floor(Math.random() * 100) + 50,
 }));
 
+const useStyles = createStyles((theme) => ({
+  header: {
+    "&& th": { color: theme.colors.gray[5] },
+  },
+}));
+
 export default function TableExample() {
+  const { classes } = useStyles();
   return (
     <DataTable
+      className={classes.header}
       columns={[
         {
           accessor: "user",
-          width: "40%",
+          width: "60%",
           render: ({ avatar, user, position }) => (
             <Group>
               <ThemeIcon radius="md" color="gray.2" />
