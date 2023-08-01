@@ -2,7 +2,7 @@ import React from "react";
 import { Sparklines, SparklinesLine, SparklinesCurve } from "react-sparklines";
 import { DataTable } from "mantine-datatable";
 import { Avatar, Button, Badge, Flex, Group, Stack, Title, Text, TextInput, ThemeIcon, createStyles, Center } from "@mantine/core";
-import { IconSquareFilled, IconSearch } from "@tabler/icons-react";
+import { IconUpload, IconFilter, IconSearch } from "@tabler/icons-react";
 
 const examples = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
@@ -47,11 +47,11 @@ export default function TableExample() {
           </Stack>
         </Group>
         <Group>
-          <Button variant="outline" color="gray.6">
-            Filter
+          <Button leftIcon={<IconFilter size="1.2rem" />} variant="outline" color="gray.4">
+            Filters
           </Button>
-          <TextInput m="0" p="0" placeholder="Search" mb="md" icon={<IconSearch size="0.9rem" stroke={1.5} />} />
-          <Button variant="filled" color="yellow">
+          <TextInput m="0" p="0" placeholder="Search" icon={<IconSearch size="0.9rem" stroke={1.5} />} />
+          <Button leftIcon={<IconUpload size="1.2rem" />} variant="filled" color="yellow">
             Export
           </Button>
         </Group>
