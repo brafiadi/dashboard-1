@@ -23,6 +23,19 @@ const data = [
 ];
 
 const COLORS = ["#FB923C", "#5EEAD4", "#A78BFA", "#FFC700"];
+const Bullet = ({ backgroundColor, size }) => {
+  return (
+    <div
+      style={{
+        backgroundColor,
+        width: size,
+        height: size,
+        borderRadius: "50%",
+      }}
+    ></div>
+  );
+};
+
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
@@ -36,8 +49,23 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const renderColorfulLegendText = (value, entry) => {
+const renderColorfulLegendText = (value) => {
   return <span style={{ color: "#596579", fontWeight: 500, fontSize: 12 }}>{value}</span>;
+};
+
+const CustomizedLegend = (props) => {
+  const { payload } = props;
+  return (
+    <Group spacing="xs">
+      {payload.map((entry, index) => (
+        <Group key={`item-${index}`} style={{ fontSize: 14 }} spacing="xs">
+          <Bullet backgroundColor={entry.payload.fill} size="12px" />
+          {entry.value}
+          <span style={{ marginLeft: "30px" }}>{entry.payload.value}</span>
+        </Group>
+      ))}
+    </Group>
+  );
 };
 
 const renderActiveShape = (props) => {
@@ -98,8 +126,8 @@ export default class CardTwo extends PureComponent {
               data={data}
               dataKey="value"
               nameKey="name"
-              cx="50%"
-              cy="40%"
+              cx="30%"
+              cy="45%"
               innerRadius={60}
               outerRadius={100}
               fill="#fab005"
@@ -114,7 +142,7 @@ export default class CardTwo extends PureComponent {
                 <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
               ))}
             </Pie>
-            <Legend iconType="circle" layout="horizontal" verticalAlign="bottom" iconSize={8} formatter={renderColorfulLegendText} />
+            <Legend layout="horizontal" verticalAlign="bottom" content={<CustomizedLegend />} />
           </PieChart>
         </ResponsiveContainer>
       </>
