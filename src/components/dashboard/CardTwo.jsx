@@ -60,8 +60,8 @@ const CustomizedLegend = (props) => {
       {payload.map((entry, index) => (
         <Group key={`item-${index}`} style={{ fontSize: 14 }} spacing="xs">
           <Bullet backgroundColor={entry.payload.fill} size="12px" />
-          {entry.value}
-          <span style={{ marginLeft: "30px" }}>{entry.payload.value}</span>
+          <span style={{ fontWeight: "600" }}>{entry.value}</span>
+          <span style={{ fontWeight: "400", marginLeft: "30px" }}>{entry.payload.value}</span>
         </Group>
       ))}
     </Group>
